@@ -36,6 +36,22 @@ export async function updateAppointmentStatus(req, res, next) {
   }
 }
 
+export async function rescheduleAppointment(req, res, next) {
+  try {
+    const { date, time, preferredTime } = req.body
+    const update = { status: 'confirmed' }
+    if (date) update.date = date
+    if (time) update.time = time
+    if (preferredTime) update.preferredTime = preferredTime
+
+    const appointment = await Appointment.findByIdAndUpdate(req.params.id, update, { new: true })
+    if (!appointment) return res.status(404).json({ message: 'Appointment not found' })
+    res.json(appointment)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export async function deleteAppointment(req, res, next) {
   try {
     const appointment = await Appointment.findByIdAndDelete(req.params.id)

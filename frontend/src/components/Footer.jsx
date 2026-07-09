@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Instagram, Facebook, Youtube, MapPin, Phone, Mail } from 'lucide-react'
 import logo from '../assets/logo.jpg'
-import { clinic } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 
 const quickLinks = [
   { to: '/', label: 'Home' },
@@ -15,6 +15,7 @@ const quickLinks = [
 ]
 
 export default function Footer() {
+  const { settings: clinic } = useSiteData()
   return (
     <footer className="bg-teal-800 text-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
@@ -60,7 +61,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} Vijaya Clinics. All rights reserved.
+        © {new Date().getFullYear()} Vijaya Clinics. All rights reserved. &nbsp;·&nbsp;
+        <Link to="/admin/login" className="hover:text-white/90">Doctor/Admin Login</Link>
       </div>
     </footer>
   )

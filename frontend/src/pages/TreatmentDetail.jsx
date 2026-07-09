@@ -1,11 +1,12 @@
 import { useParams, Link } from 'react-router-dom'
 import { Calendar, Clock, CheckCircle2 } from 'lucide-react'
-import { allTreatments } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 import NotFound from './NotFound.jsx'
 
 export default function TreatmentDetail() {
   const { slug } = useParams()
-  const treatment = allTreatments.find((t) => t.slug === slug)
+  const { treatments } = useSiteData()
+  const treatment = treatments.find((t) => t.slug === slug)
 
   if (!treatment) return <NotFound />
 
@@ -21,24 +22,33 @@ export default function TreatmentDetail() {
           <div>
             <h2 className="font-display text-lg font-semibold text-teal-800">Overview</h2>
             <p className="mt-2 text-sm text-ink/70">
-              {treatment.name} is treated at Vijaya Clinics with a personalised plan designed by Dr. Amit Nikam based on your skin type, medical history and severity of the condition.
+              {treatment.overview || `${treatment.name} is treated at Vijaya Clinics with a personalised plan designed by Dr. Amit Nikam based on your skin type, medical history and severity of the condition.`}
             </p>
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold text-teal-800">Benefits</h2>
-            <ul className="mt-2 space-y-1.5 text-sm text-ink/70">
-              <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Evidence-based, dermatologist-led approach</li>
-              <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Treatment plan tailored to your skin</li>
-              <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Clear guidance on aftercare and follow-up</li>
-            </ul>
+            {treatment.benefits ? (
+              <p className="mt-2 text-sm text-ink/70">{treatment.benefits}</p>
+            ) : (
+              <ul className="mt-2 space-y-1.5 text-sm text-ink/70">
+                <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Evidence-based, dermatologist-led approach</li>
+                <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Treatment plan tailored to your skin</li>
+                <li className="flex items-start gap-2"><CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal-500" /> Clear guidance on aftercare and follow-up</li>
+              </ul>
+            )}
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold text-teal-800">Duration &amp; Recovery</h2>
-            <p className="mt-2 flex items-center gap-2 text-sm text-ink/70"><Clock size={16} className="text-teal-500" /> Session length and number of sittings vary by severity — discussed at consultation.</p>
+            <p className="mt-2 flex items-center gap-2 text-sm text-ink/70">
+              <Clock size={16} className="shrink-0 text-teal-500" />
+              {treatment.duration || 'Session length and number of sittings vary by severity — discussed at consultation.'}
+            </p>
           </div>
           <div>
             <h2 className="font-display text-lg font-semibold text-teal-800">Before &amp; After Care</h2>
-            <p className="mt-2 text-sm text-ink/70">Specific pre- and post-treatment instructions will be shared by Dr. Nikam based on your exact treatment plan.</p>
+            <p className="mt-2 text-sm text-ink/70">
+              {treatment.beforeAfterCare || 'Specific pre- and post-treatment instructions will be shared by Dr. Nikam based on your exact treatment plan.'}
+            </p>
           </div>
         </div>
 

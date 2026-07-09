@@ -7,10 +7,16 @@ import rateLimit from 'express-rate-limit'
 import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorHandler.js'
 
+import authRoutes from './routes/authRoutes.js'
+import dashboardRoutes from './routes/dashboardRoutes.js'
 import appointmentRoutes from './routes/appointmentRoutes.js'
 import contactRoutes from './routes/contactRoutes.js'
 import reviewRoutes from './routes/reviewRoutes.js'
 import faqRoutes from './routes/faqRoutes.js'
+import doctorRoutes from './routes/doctorRoutes.js'
+import settingsRoutes from './routes/settingsRoutes.js'
+import treatmentRoutes from './routes/treatmentRoutes.js'
+import galleryRoutes from './routes/galleryRoutes.js'
 
 dotenv.config()
 
@@ -22,15 +28,21 @@ app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 app.use('/uploads', express.static(path.resolve('uploads')))
 
-const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200 })
+const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 300 })
 app.use('/api', limiter)
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Vijaya Clinics API is running' }))
 
+app.use('/api/auth', authRoutes)
+app.use('/api/dashboard', dashboardRoutes)
 app.use('/api/appointments', appointmentRoutes)
 app.use('/api/contact', contactRoutes)
 app.use('/api/reviews', reviewRoutes)
 app.use('/api/faqs', faqRoutes)
+app.use('/api/doctor', doctorRoutes)
+app.use('/api/settings', settingsRoutes)
+app.use('/api/treatments', treatmentRoutes)
+app.use('/api/gallery', galleryRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

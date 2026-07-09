@@ -1,9 +1,11 @@
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading.jsx'
 import ContactForm from '../components/ContactForm.jsx'
-import { clinic } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 
 export default function Contact() {
+  const { settings: clinic } = useSiteData()
+
   return (
     <div>
       <section className="bg-teal-fade px-6 py-14 text-center sm:py-16">

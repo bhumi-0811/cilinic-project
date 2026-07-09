@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom'
 import { GraduationCap, Languages, Stethoscope, Calendar } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading.jsx'
-import { doctor } from '../utils/clinicData.js'
-import doctorImg from '../assets/doctor-desk.jpg'
+import { useSiteData } from '../context/SiteDataContext.jsx'
+import doctorImgFallback from '../assets/doctor-desk.jpg'
 
 export default function DoctorProfile() {
+  const { doctor } = useSiteData()
+  const photo = doctor.photoUrl || doctorImgFallback
+
   return (
     <div>
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-8">
-        <img src={doctorImg} alt={doctor.name} className="w-full rounded-3xl object-cover shadow-soft" />
+        <img src={photo} alt={doctor.name} className="aspect-[3/4] w-full rounded-3xl object-cover shadow-soft" />
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-500">Doctor Profile</p>
           <h1 className="mt-2 font-display text-3xl font-semibold text-teal-800 sm:text-4xl">{doctor.name}</h1>
@@ -51,17 +54,14 @@ export default function DoctorProfile() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <SectionHeading eyebrow="Timeline" title="Experience &amp; Education" />
           <div className="mt-10 space-y-6 border-l-2 border-teal-200 pl-6">
-            <div>
-              <p className="font-display font-semibold text-teal-800">DDV — College of Physicians and Surgeons, Mumbai</p>
-              <p className="text-sm text-ink/60">Postgraduate diploma in dermatology, venereology &amp; leprosy</p>
-            </div>
-            <div>
-              <p className="font-display font-semibold text-teal-800">MBBS — Jawaharlal Nehru Medical College, Sawangi, Wardha</p>
-              <p className="text-sm text-ink/60">Foundational medical degree</p>
-            </div>
+            {doctor.qualifications.map((q) => (
+              <div key={q}>
+                <p className="font-display font-semibold text-teal-800">{q}</p>
+              </div>
+            ))}
             <div>
               <p className="font-display font-semibold text-teal-800">Practicing Dermatologist, Nagpur</p>
-              <p className="text-sm text-ink/60">12+ years treating skin, hair and mental wellness concerns across Nagpur</p>
+              <p className="text-sm text-ink/60">{doctor.experienceYears || 12}+ years treating skin, hair and mental wellness concerns across Nagpur</p>
             </div>
           </div>
         </div>

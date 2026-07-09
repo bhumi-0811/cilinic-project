@@ -17,3 +17,13 @@ export async function getContactMessages(req, res, next) {
     next(err)
   }
 }
+
+export async function markMessageRead(req, res, next) {
+  try {
+    const message = await ContactMessage.findByIdAndUpdate(req.params.id, { read: true }, { new: true })
+    if (!message) return res.status(404).json({ message: 'Message not found' })
+    res.json(message)
+  } catch (err) {
+    next(err)
+  }
+}

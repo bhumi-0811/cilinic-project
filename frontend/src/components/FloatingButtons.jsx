@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MessageCircle, Phone, Calendar, ArrowUp } from 'lucide-react'
-import { clinic } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 
 export default function FloatingButtons() {
+  const { settings: clinic } = useSiteData()
   const [showTop, setShowTop] = useState(false)
 
   useEffect(() => {

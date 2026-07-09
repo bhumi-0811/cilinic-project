@@ -4,7 +4,8 @@ import { Calendar, Phone, Sparkles, ShieldCheck, HeartHandshake, Users, Brain, S
 import SectionHeading from '../components/SectionHeading.jsx'
 import AnimatedCounter from '../components/AnimatedCounter.jsx'
 import TreatmentCard from '../components/TreatmentCard.jsx'
-import { clinic, doctor, stats, allTreatments } from '../utils/clinicData.js'
+import { stats, allTreatments as staticAllTreatments } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 import doctorImg from '../assets/doctor-video.jpg'
 import entranceImg from '../assets/entrance-door.jpg'
 
@@ -16,6 +17,7 @@ const highlights = [
 ]
 
 export default function Home() {
+  const { settings: clinic, doctor, treatments } = useSiteData()
   return (
     <div>
       {/* Hero */}
@@ -117,7 +119,7 @@ export default function Home() {
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
         <SectionHeading eyebrow="Treatments" title="Explore our specialized care" subtitle="A few of the treatments we offer — browse the full list for details on each." />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {allTreatments.slice(0, 9).map((t) => <TreatmentCard key={t.slug} {...t} />)}
+          {(treatments.length ? treatments : staticAllTreatments).slice(0, 9).map((t) => <TreatmentCard key={t.slug} {...t} />)}
         </div>
         <div className="mt-8 text-center">
           <Link to="/treatments" className="text-sm font-semibold text-teal-600 underline">View all treatments →</Link>

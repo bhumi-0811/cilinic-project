@@ -1,0 +1,38 @@
+export const treatmentSeedData = [
+  // Clinical Disorders
+  { name: 'Fungal Infections', category: 'Clinical Disorders' },
+  { name: 'Eczema', category: 'Clinical Disorders' },
+  { name: 'Psoriasis', category: 'Clinical Disorders' },
+  { name: 'Herpes', category: 'Clinical Disorders' },
+  { name: 'Skin Allergy', category: 'Clinical Disorders' },
+  { name: 'Skin Infection', category: 'Clinical Disorders' },
+  { name: 'Skin Tags', category: 'Clinical Disorders' },
+  { name: 'Nail Disorders', category: 'Clinical Disorders' },
+  // Aesthetic Treatments
+  { name: 'Derma Pen', category: 'Aesthetic Treatments' },
+  { name: 'PRP (Vampire Facial)', category: 'Aesthetic Treatments' },
+  { name: 'HydraFacial', category: 'Aesthetic Treatments' },
+  { name: 'Carbon Laser Peel', category: 'Aesthetic Treatments' },
+  { name: 'Chemical Peels', category: 'Aesthetic Treatments' },
+  { name: 'Laser Hair Reduction', category: 'Aesthetic Treatments' },
+  { name: 'Skin Tag Removal', category: 'Aesthetic Treatments' },
+  { name: 'Photofacial', category: 'Aesthetic Treatments' },
+  // Hair Treatments
+  { name: 'GFC', category: 'Hair Treatments' },
+  { name: 'PRP for Hair', category: 'Hair Treatments' },
+  { name: 'Hair Regrowth Therapy', category: 'Hair Treatments' },
+  { name: 'Dandruff & Scalp Treatment', category: 'Hair Treatments' },
+  { name: 'Hair Fall Treatment', category: 'Hair Treatments' },
+  { name: 'Hair Thinning', category: 'Hair Treatments' },
+  { name: 'Alopecia', category: 'Hair Treatments' },
+  { name: 'Trichology', category: 'Hair Treatments' },
+  // Skin & Anti-Aging
+  { name: 'Anti-Aging Treatments', category: 'Skin & Anti-Aging' },
+  { name: 'Melasma Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Pigmentation Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Acne Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Acne Scar Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Wrinkle Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Keloid Treatment', category: 'Skin & Anti-Aging' },
+  { name: 'Scar Treatment', category: 'Skin & Anti-Aging' },
+]

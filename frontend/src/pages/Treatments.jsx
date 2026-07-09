@@ -1,8 +1,10 @@
 import SectionHeading from '../components/SectionHeading.jsx'
 import TreatmentCard from '../components/TreatmentCard.jsx'
-import { treatmentCategories } from '../utils/clinicData.js'
+import { useSiteData } from '../context/SiteDataContext.jsx'
 
 export default function Treatments() {
+  const { treatmentCategories } = useSiteData()
+
   return (
     <div>
       <section className="bg-teal-fade px-6 py-14 text-center sm:py-16">
