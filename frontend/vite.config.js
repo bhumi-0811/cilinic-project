@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/cilinic-project/' : '/',
   plugins: [react()],
-  base: '/cilinic-project/',
   server: {
     port: 5173,
     proxy: {
@@ -17,4 +17,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))

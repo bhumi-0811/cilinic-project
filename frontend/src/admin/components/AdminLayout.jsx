@@ -30,31 +30,31 @@ export default function AdminLayout({ children, title }) {
   return (
     <div className="flex min-h-screen bg-sand-50">
       {/* Mobile top bar */}
-      <div className="fixed inset-x-0 top-0 z-40 flex items-center justify-between bg-teal-800 px-4 py-3 lg:hidden">
-        <div className="flex items-center gap-2.5">
-          <img src={logo} alt="" className="h-8 w-8 rounded-full object-cover" />
-          <span className="font-display text-sm font-semibold text-white">Vijaya Admin</span>
+      <div className="fixed inset-x-0 top-0 z-40 flex h-16 items-center justify-between bg-teal-800 px-4 lg:hidden">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <img src={logo} alt="" className="h-8 w-8 shrink-0 rounded-full object-cover" />
+          <span className="truncate font-display text-sm font-semibold text-white">Vijaya Admin</span>
         </div>
-        <button onClick={() => setOpen((o) => !o)} className="text-white" aria-label="Toggle menu">
+        <button onClick={() => setOpen((o) => !o)} className="shrink-0 text-white" aria-label="Toggle menu">
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-72 transform bg-teal-800 pt-16 transition-transform lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:pt-0 ${
+        className={`fixed inset-y-0 left-0 z-30 flex w-72 max-w-[85vw] transform flex-col bg-teal-800 pt-16 transition-transform lg:sticky lg:top-0 lg:h-screen lg:max-w-none lg:translate-x-0 lg:pt-0 ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="hidden items-center gap-3 border-b border-white/10 px-6 py-6 lg:flex">
-          <img src={logo} alt="Vijaya Clinics" className="h-10 w-10 rounded-full object-cover" />
-          <div>
-            <p className="font-display text-sm font-semibold text-white">Vijaya Clinics</p>
-            <p className="text-xs text-white/60">Admin Dashboard</p>
+        <div className="hidden shrink-0 items-center gap-3 border-b border-white/10 px-6 py-6 lg:flex">
+          <img src={logo} alt="Vijaya Clinics" className="h-10 w-10 shrink-0 rounded-full object-cover" />
+          <div className="min-w-0">
+            <p className="truncate font-display text-sm font-semibold text-white">Vijaya Clinics</p>
+            <p className="truncate text-xs text-white/60">Admin Dashboard</p>
           </div>
         </div>
 
-        <nav className="flex flex-col gap-1 px-4 py-6">
+        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -66,18 +66,18 @@ export default function AdminLayout({ children, title }) {
                 }`
               }
             >
-              <item.icon size={18} /> {item.label}
+              <item.icon size={18} className="shrink-0" /> <span className="truncate">{item.label}</span>
             </NavLink>
           ))}
         </nav>
 
-        <div className="mt-auto border-t border-white/10 px-4 py-5">
+        <div className="shrink-0 border-t border-white/10 px-4 py-5">
           <p className="truncate px-2 text-xs text-white/50">{user?.email}</p>
           <button
             onClick={handleLogout}
             className="mt-2 flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/70 transition hover:bg-white/10 hover:text-white"
           >
-            <LogOut size={18} /> Logout
+            <LogOut size={18} className="shrink-0" /> Logout
           </button>
         </div>
       </aside>
@@ -91,8 +91,8 @@ export default function AdminLayout({ children, title }) {
       )}
 
       {/* Main content */}
-      <main className="min-w-0 flex-1 px-4 pb-16 pt-20 sm:px-6 lg:px-10 lg:pt-10">
-        {title && <h1 className="mb-6 font-display text-2xl font-semibold text-teal-800 sm:text-3xl">{title}</h1>}
+      <main className="min-w-0 flex-1 px-4 pb-16 pt-24 sm:px-6 lg:px-10 lg:pt-10">
+        {title && <h1 className="mb-6 break-words font-display text-2xl font-semibold text-teal-800 sm:text-3xl">{title}</h1>}
         {children}
       </main>
     </div>

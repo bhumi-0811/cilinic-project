@@ -20,8 +20,8 @@ export const clinic = {
 export const doctor = {
   name: 'Dr. Amit Nikam',
   designation: 'Consultant Dermatologist',
-  qualifications: ['MBBS — Jawaharlal Nehru Medical College, Sawangi, Wardha', 'DDV — College of Physicians and Surgeons, Mumbai'],
-  bio: 'Dr. Amit Nikam is a practicing dermatologist in Nagpur, dedicated to combining evidence-based skin care with a calm, patient-first approach. Vijaya Clinics was built on the belief that skin health and mental wellness are deeply connected — one rarely thrives without the other.',
+  qualifications: ['MBBS - Jawaharlal Nehru Medical College, Sawangi, Wardha', 'DDV - College of Physicians and Surgeons, Mumbai'],
+  bio: 'Dr. Amit Nikam is a practicing dermatologist in Nagpur, dedicated to combining evidence-based skin care with a calm, patient-first approach. Vijaya Clinics was built on the belief that skin health and mental wellness are deeply connected - one rarely thrives without the other.',
   specializations: ['Clinical Dermatology', 'Aesthetic & Cosmetic Treatments', 'Hair & Scalp Disorders', 'Mental Wellness Counselling'],
   languages: ['English', 'Hindi', 'Marathi'],
 }
@@ -103,6 +103,6 @@ export const faqs = [
   { category: 'Appointments', question: 'Can I reschedule my appointment?', answer: 'Yes, call the clinic at least a few hours in advance and our reception will help you find a new slot.' },
   { category: 'Consultation', question: 'Is video consultation as effective as an in-clinic visit?', answer: 'For most follow-ups, prescription renewals and initial assessments, video consultation works well. For procedures or detailed skin examination, an in-clinic visit is recommended.' },
   { category: 'Treatments', question: 'How many sessions does a typical treatment need?', answer: 'This varies by condition and treatment type. Dr. Nikam will discuss a personalised treatment plan and expected number of sessions during your consultation.' },
-  { category: 'Mental Wellness', question: 'Do you offer counselling alongside dermatology care?', answer: 'Yes — Vijaya Clinics has a dedicated counselling room for mental wellness consultations, separate from our dermatology services, with both online and in-person options.' },
+  { category: 'Mental Wellness', question: 'Do you offer counselling alongside dermatology care?', answer: 'Yes - Vijaya Clinics has a dedicated counselling room for mental wellness consultations, separate from our dermatology services, with both online and in-person options.' },
   { category: 'General', question: 'What are your clinic timings?', answer: 'Monday to Saturday, 11:30 AM–2:00 PM and 6:00 PM–8:30 PM. We are closed on Wednesdays and Sundays.' },
 ]

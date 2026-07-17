@@ -11,7 +11,7 @@ export default function Appointment() {
     <div>
       <section className="bg-teal-fade px-6 py-14 text-center sm:py-16">
         <h1 className="font-display text-3xl font-semibold text-white sm:text-4xl">Book an Appointment</h1>
-        <p className="mx-auto mt-3 max-w-xl text-white/85">Choose in-clinic or video consultation — either way, Dr. Nikam will be ready for you.</p>
+        <p className="mx-auto mt-3 max-w-xl text-white/85">Choose in-clinic or video consultation - either way, Dr. Nikam will be ready for you.</p>
       </section>
 
       <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">

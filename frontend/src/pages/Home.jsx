@@ -13,7 +13,7 @@ const highlights = [
   { icon: Sparkles, title: 'Modern Equipment', desc: 'Advanced diagnostic and treatment technology for reliable, safe results.' },
   { icon: HeartHandshake, title: 'Personalized Care', desc: 'Every treatment plan is built around your skin, history, and comfort.' },
   { icon: Stethoscope, title: 'Experienced Dermatologist', desc: '12+ years of focused clinical dermatology practice in Nagpur.' },
-  { icon: ShieldCheck, title: 'Comfortable Environment', desc: 'A calm, clean clinic — including a dedicated counselling room.' },
+  { icon: ShieldCheck, title: 'Comfortable Environment', desc: 'A calm, clean clinic - including a dedicated counselling room.' },
 ]
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
               Healthy Skin. <br /> Calm Mind. <br /> Confident You.
             </h1>
             <p className="mt-5 max-w-md text-sm text-white/85 sm:text-base">
-              Vijaya Clinics brings expert dermatology and thoughtful mental wellness care together under one roof in Nagpur — led by Dr. Amit Nikam.
+              Vijaya Clinics brings expert dermatology and thoughtful mental wellness care together under one roof in Nagpur - led by Dr. Amit Nikam.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
               <Link to="/appointment" className="flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-teal-700 shadow-soft transition hover:scale-105 sm:px-6 sm:py-3.5 sm:text-base">
@@ -72,12 +72,12 @@ export default function Home() {
 
       {/* Consultation cards */}
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <SectionHeading eyebrow="Book a Consultation" title="Two ways to begin your care" subtitle="Choose the path that fits how you want to be seen — in person or from wherever you are." />
+        <SectionHeading eyebrow="Book a Consultation" title="Two ways to begin your care" subtitle="Choose the path that fits how you want to be seen - in person or from wherever you are." />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           <div className="rounded-3xl border border-teal-100 bg-white p-8 shadow-card">
             <div className="mb-5 inline-flex rounded-2xl bg-teal-50 p-3 text-teal-600"><Stethoscope size={26} /></div>
             <h3 className="font-display text-xl font-semibold text-teal-800">Skin Health Consultation</h3>
-            <p className="mt-2 text-sm text-ink/70">In-clinic exams, online follow-ups, or a video consultation — whichever suits you.</p>
+            <p className="mt-2 text-sm text-ink/70">In-clinic exams, online follow-ups, or a video consultation - whichever suits you.</p>
             <ul className="mt-4 space-y-1 text-sm text-ink/60">
               <li>• Online</li><li>• In-clinic</li><li>• Video Consultation</li>
             </ul>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="rounded-3xl border border-mint-200 bg-mint-50 p-8 shadow-card">
             <div className="mb-5 inline-flex rounded-2xl bg-white p-3 text-mint-600"><Brain size={26} /></div>
             <h3 className="font-display text-xl font-semibold text-teal-800">Mental Wellness Consultation</h3>
-            <p className="mt-2 text-sm text-ink/70">A private, judgement-free space to talk — online, in person, or over video.</p>
+            <p className="mt-2 text-sm text-ink/70">A private, judgement-free space to talk - online, in person, or over video.</p>
             <ul className="mt-4 space-y-1 text-sm text-ink/60">
               <li>• Online</li><li>• In-person</li><li>• Video Consultation</li>
             </ul>
@@ -117,7 +117,7 @@ export default function Home() {
 
       {/* Treatments preview */}
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-        <SectionHeading eyebrow="Treatments" title="Explore our specialized care" subtitle="A few of the treatments we offer — browse the full list for details on each." />
+        <SectionHeading eyebrow="Treatments" title="Explore our specialized care" subtitle="A few of the treatments we offer - browse the full list for details on each." />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {(treatments.length ? treatments : staticAllTreatments).slice(0, 9).map((t) => <TreatmentCard key={t.slug} {...t} />)}
         </div>
@@ -131,7 +131,7 @@ export default function Home() {
         <img src={entranceImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-15" />
         <div className="relative mx-auto max-w-2xl px-6">
           <Users className="mx-auto text-mint-300" size={32} />
-          <h2 className="mt-4 font-display text-2xl font-semibold text-white sm:text-3xl">Ready to feel better in your skin — and your mind?</h2>
+          <h2 className="mt-4 font-display text-2xl font-semibold text-white sm:text-3xl">Ready to feel better in your skin - and your mind?</h2>
           <Link to="/appointment" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-teal-700 shadow-soft transition hover:scale-105">
             <Calendar size={18} /> Book Your Appointment
           </Link>

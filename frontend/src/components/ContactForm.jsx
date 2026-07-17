@@ -54,7 +54,7 @@ export default function ContactForm() {
         {status === 'loading' ? <Loader2 className="animate-spin" size={18} /> : <Send size={16} />}
         Send Message
       </button>
-      {status === 'error' && <p className="text-center text-sm text-red-500">Couldn't send right now — please call us instead.</p>}
+      {status === 'error' && <p className="text-center text-sm text-red-500">Couldn't send right now - please call us instead.</p>}
     </form>
   )
 }

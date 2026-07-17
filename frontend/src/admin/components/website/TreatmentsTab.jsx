@@ -101,7 +101,7 @@ export default function TreatmentsTab() {
               </div>
             </div>
           ))}
-          {treatments.length === 0 && <p className="text-center text-sm text-ink/50">No treatments yet — add your first one above.</p>}
+          {treatments.length === 0 && <p className="text-center text-sm text-ink/50">No treatments yet - add your first one above.</p>}
         </div>
       )}
     </div>

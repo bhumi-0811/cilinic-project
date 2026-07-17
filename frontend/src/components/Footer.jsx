@@ -24,7 +24,7 @@ export default function Footer() {
             <img src={logo} alt="Vijaya Clinics" className="h-10 w-10 rounded-full object-cover" />
             <p className="font-display text-lg font-semibold">Vijaya Clinics</p>
           </div>
-          <p className="mt-4 text-sm text-white/70">Centre for Skin &amp; Mental Health — where dermatology meets calm, careful attention.</p>
+          <p className="mt-4 text-sm text-white/70">Centre for Skin &amp; Mental Health - where dermatology meets calm, careful attention.</p>
           <div className="mt-5 flex gap-3">
             <a href={clinic.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-white/10 p-2.5 hover:bg-white/20"><Instagram size={16} /></a>
             <a href="#" aria-label="Facebook (coming soon)" className="rounded-full bg-white/10 p-2.5 hover:bg-white/20"><Facebook size={16} /></a>

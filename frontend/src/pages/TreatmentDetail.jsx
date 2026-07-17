@@ -41,7 +41,7 @@ export default function TreatmentDetail() {
             <h2 className="font-display text-lg font-semibold text-teal-800">Duration &amp; Recovery</h2>
             <p className="mt-2 flex items-center gap-2 text-sm text-ink/70">
               <Clock size={16} className="shrink-0 text-teal-500" />
-              {treatment.duration || 'Session length and number of sittings vary by severity — discussed at consultation.'}
+              {treatment.duration || 'Session length and number of sittings vary by severity - discussed at consultation.'}
             </p>
           </div>
           <div>

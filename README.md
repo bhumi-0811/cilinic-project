@@ -1,4 +1,4 @@
-# Vijaya Clinics — Website + Admin/Doctor Dashboard
+# Vijaya Clinics - Website + Admin/Doctor Dashboard
 
 Full-stack clinic website with a single combined Doctor/Admin login and dashboard.
 
@@ -8,7 +8,7 @@ Full-stack clinic website with a single combined Doctor/Admin login and dashboar
 - Home, About, Doctor Profile, Treatments (list + detail pages), Reviews, FAQ, Contact
 - In-Clinic and Tele-Consultation appointment booking (saves to MongoDB)
 - Contact form (saves to MongoDB)
-- All content below is **live from the database** — edits made in the admin dashboard show up on the public site immediately:
+- All content below is **live from the database** - edits made in the admin dashboard show up on the public site immediately:
   - Doctor profile (photo, bio, qualifications, specializations, languages)
   - Clinic settings (phone, email, address, opening hours)
   - Treatments (list, categories, detail page content)
@@ -16,20 +16,20 @@ Full-stack clinic website with a single combined Doctor/Admin login and dashboar
 - Fully responsive (tested at 320px–1440px+), fixed floating WhatsApp/Call/Book buttons
 
 ### Doctor/Admin Dashboard (`/admin/login`)
-Single combined login for the doctor — no separate roles needed.
+Single combined login for the doctor - no separate roles needed.
 
-- **📊 Dashboard** — Total / Today's / Upcoming / Completed / Cancelled appointment counts, recent appointments table
-- **📅 Appointment Management** — view all appointments, Accept, Reject, Reschedule (date & time), Mark Complete
-- **👤 Patient Details** — tap any appointment to see name, phone, age, gender, concern, date/time, uploaded reports
-- **💬 Contact Messages** — view all messages from the Contact Us form, mark as read
-- **⭐ Reviews** — approve/reject incoming reviews; only approved reviews show on the public site
+- **📊 Dashboard** - Total / Today's / Upcoming / Completed / Cancelled appointment counts, recent appointments table
+- **📅 Appointment Management** - view all appointments, Accept, Reject, Reschedule (date & time), Mark Complete
+- **👤 Patient Details** - tap any appointment to see name, phone, age, gender, concern, date/time, uploaded reports
+- **💬 Contact Messages** - view all messages from the Contact Us form, mark as read
+- **⭐ Reviews** - approve/reject incoming reviews; only approved reviews show on the public site
 - **📝 Website Management** (tabs):
-  - Timings & Contact — edit clinic phone, email, address, opening hours
-  - Treatments — add/edit/delete treatments and their detail-page content
-  - FAQ — add/edit/delete FAQs
-  - Gallery — upload/delete clinic photos by category
-- **👨‍⚕️ Doctor Profile** — edit photo, qualifications, experience, about section
-- **🔒 Settings** — change password, change email, logout
+  - Timings & Contact - edit clinic phone, email, address, opening hours
+  - Treatments - add/edit/delete treatments and their detail-page content
+  - FAQ - add/edit/delete FAQs
+  - Gallery - upload/delete clinic photos by category
+- **👨‍⚕️ Doctor Profile** - edit photo, qualifications, experience, about section
+- **🔒 Settings** - change password, change email, logout
 
 There's a small "Doctor/Admin Login" link in the public site's footer.
 
@@ -66,7 +66,7 @@ The seed script prints your admin login to the terminal the first time it runs:
 Admin login created:
   Email: amitsnikam@gmail.com
   Password: changeme123
-  (Change this password after first login — Settings page in the admin dashboard)
+  (Change this password after first login - Settings page in the admin dashboard)
 ```
 
 **⚠️ Change this password immediately after your first login**, using the Settings page in the dashboard.
@@ -89,10 +89,10 @@ Public (no login needed):
 | Method | Endpoint |
 |---|---|
 | GET | `/api/health` |
-| POST | `/api/appointments` — book appointment |
-| POST | `/api/contact` — send contact message |
-| POST | `/api/reviews` — submit a review (pending approval) |
-| GET | `/api/reviews` — approved reviews only |
+| POST | `/api/appointments` - book appointment |
+| POST | `/api/contact` - send contact message |
+| POST | `/api/reviews` - submit a review (pending approval) |
+| GET | `/api/reviews` - approved reviews only |
 | GET | `/api/faqs` |
 | GET | `/api/doctor` |
 | GET | `/api/settings` |
@@ -121,5 +121,5 @@ Protected (require `Authorization: Bearer <token>` from login):
 
 - Uploaded files are saved under `backend/uploads/` (`reports/`, `doctor/`, `gallery/`) and served at `/uploads/...`.
 - JWT tokens are valid for 7 days; the dashboard will redirect to login automatically if the token expires.
-- Only one admin/doctor account is supported by design (as requested) — there's no multi-user role system.
+- Only one admin/doctor account is supported by design (as requested) - there's no multi-user role system.
 - Not included yet: patient/tele-consultation payment integration, e-prescription PDFs, WhatsApp/SMS reminders, multi-language support.

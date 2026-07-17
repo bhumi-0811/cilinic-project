@@ -38,7 +38,7 @@ export default function About() {
           <div className="rounded-2xl bg-white p-8 text-center shadow-card">
             <ShieldCheck className="mx-auto text-teal-600" size={28} />
             <p className="mt-4 font-display font-semibold text-teal-800">Our Promise</p>
-            <p className="mt-2 text-sm text-ink/65">Personalised treatment plans, modern equipment, and a comfortable environment — every single visit.</p>
+            <p className="mt-2 text-sm text-ink/65">Personalised treatment plans, modern equipment, and a comfortable environment - every single visit.</p>
           </div>
         </div>
       </section>

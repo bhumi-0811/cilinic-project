@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CalendarDays, Clock, CalendarClock, CheckCircle2, XCircle, Loader2 } from 'lucide-react'
+import { CalendarDays, Clock, CalendarClock, CheckCircle2, XCircle, Loader2, Eye } from 'lucide-react'
 import AdminLayout from '../components/AdminLayout.jsx'
+import PatientModal from '../components/PatientModal.jsx'
 import api from '../../utils/api.js'
 
 const statCards = [
@@ -15,12 +16,15 @@ const statCards = [
 export default function Dashboard() {
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [selected, setSelected] = useState(null)
 
-  useEffect(() => {
+  function load() {
     api.get('/dashboard/stats')
       .then((res) => setStats(res.data))
       .finally(() => setLoading(false))
-  }, [])
+  }
+
+  useEffect(() => { load() }, [])
 
   return (
     <AdminLayout title="Dashboard">
@@ -28,7 +32,7 @@ export default function Dashboard() {
         <div className="flex justify-center py-16 text-teal-500"><Loader2 className="animate-spin" size={28} /></div>
       ) : (
         <>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {statCards.map((c) => (
               <div key={c.key} className="rounded-2xl bg-white p-5 shadow-card">
                 <div className={`inline-flex rounded-xl p-2.5 ${c.color}`}><c.icon size={20} /></div>
@@ -41,37 +45,37 @@ export default function Dashboard() {
           <div className="mt-10">
             <div className="flex items-center justify-between">
               <h2 className="font-display text-lg font-semibold text-teal-800">Recent Appointments</h2>
-              <Link to="/admin/appointments" className="text-sm font-medium text-teal-600 underline">View all →</Link>
+              <Link to="/admin/appointments" className="text-sm font-medium text-teal-600 underline">View all -&gt;</Link>
             </div>
-            <div className="mt-4 overflow-x-auto rounded-2xl bg-white shadow-card">
-              <table className="w-full min-w-[640px] text-left text-sm">
-                <thead>
-                  <tr className="border-b border-teal-100 text-xs uppercase tracking-wide text-ink/50">
-                    <th className="px-5 py-3">Patient</th>
-                    <th className="px-5 py-3">Type</th>
-                    <th className="px-5 py-3">Contact</th>
-                    <th className="px-5 py-3">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {stats?.recent?.length ? stats.recent.map((a) => (
-                    <tr key={a._id} className="border-b border-teal-50 last:border-0">
-                      <td className="px-5 py-3 font-medium text-ink/85">{a.name}</td>
-                      <td className="px-5 py-3 capitalize text-ink/65">{a.type.replace('-', ' ')}</td>
-                      <td className="px-5 py-3 text-ink/65">{a.phone}</td>
-                      <td className="px-5 py-3">
-                        <StatusBadge status={a.status} />
-                      </td>
-                    </tr>
-                  )) : (
-                    <tr><td colSpan={4} className="px-5 py-8 text-center text-ink/50">No appointments yet.</td></tr>
-                  )}
-                </tbody>
-              </table>
+
+            <div className="mt-4 space-y-2.5">
+              {stats?.recent?.length ? stats.recent.map((a) => (
+                <div key={a._id} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white p-4 shadow-card">
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-medium text-ink/85">{a.name}</p>
+                    <p className="mt-0.5 truncate text-xs capitalize text-ink/55">{a.type.replace('-', ' ')} - {a.phone}</p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <StatusBadge status={a.status} />
+                    <button
+                      onClick={() => setSelected(a)}
+                      aria-label="Preview appointment details"
+                      title="Preview"
+                      className="rounded-full bg-teal-50 p-2 text-teal-600 transition hover:bg-teal-100"
+                    >
+                      <Eye size={16} />
+                    </button>
+                  </div>
+                </div>
+              )) : (
+                <p className="rounded-2xl bg-white p-8 text-center text-sm text-ink/50 shadow-card">No appointments yet.</p>
+              )}
             </div>
           </div>
         </>
       )}
+
+      {selected && <PatientModal appointment={selected} onClose={() => setSelected(null)} />}
     </AdminLayout>
   )
 }
