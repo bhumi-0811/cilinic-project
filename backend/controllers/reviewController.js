@@ -3,7 +3,7 @@ import Review from '../models/Review.js'
 export async function createReview(req, res, next) {
   try {
     const review = await Review.create(req.body)
-    res.status(201).json({ message: 'Review submitted — pending approval', review })
+    res.status(201).json({ message: 'Review submitted - pending approval', review })
   } catch (err) {
     next(err)
   }

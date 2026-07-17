@@ -50,7 +50,7 @@ async function seed() {
       name: 'Dr. Amit Nikam',
       designation: 'Consultant Dermatologist',
       bio: 'Dr. Amit Nikam is a practicing dermatologist in Nagpur, dedicated to combining evidence-based skin care with a calm, patient-first approach.',
-      qualifications: ['MBBS — Jawaharlal Nehru Medical College, Sawangi, Wardha', 'DDV — College of Physicians and Surgeons, Mumbai'],
+      qualifications: ['MBBS - Jawaharlal Nehru Medical College, Sawangi, Wardha', 'DDV - College of Physicians and Surgeons, Mumbai'],
       specializations: ['Clinical Dermatology', 'Aesthetic & Cosmetic Treatments', 'Hair & Scalp Disorders', 'Mental Wellness Counselling'],
       languages: ['English', 'Hindi', 'Marathi'],
       experienceYears: 12,
@@ -81,9 +81,9 @@ async function seed() {
   const userExists = await User.findOne({ email: adminEmail })
   if (!userExists) {
     await User.create({ name: 'Dr. Amit Nikam', email: adminEmail, password: adminPassword })
-    console.log(`\nAdmin login created:\n  Email: ${adminEmail}\n  Password: ${adminPassword}\n  (Change this password after first login — Settings page in the admin dashboard)\n`)
+    console.log(`\nAdmin login created:\n  Email: ${adminEmail}\n  Password: ${adminPassword}\n  (Change this password after first login - Settings page in the admin dashboard)\n`)
   } else {
-    console.log('\nAdmin login already exists — skipped creating a new one.\n')
+    console.log('\nAdmin login already exists - skipped creating a new one.\n')
   }
 
   console.log('Seed data inserted successfully')
