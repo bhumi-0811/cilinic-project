@@ -92,8 +92,8 @@ export const treatmentCategories = [
 export const allTreatments = treatmentCategories.flatMap((c) => c.treatments.map((t) => ({ ...t, category: c.label })))
 
 export const stats = [
-  { label: 'Years of Experience', value: 12, suffix: '+' },
-  { label: 'Happy Patients', value: 8000, suffix: '+' },
+  { label: 'Years of Experience', value: 7, suffix: '+' },
+  { label: 'Happy Patients', value: 5, suffix: 'k+' },
   { label: 'Skin Procedures', value: 150, suffix: '+' },
   { label: 'Success Rate', value: 98, suffix: '%' },
 ]
