@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
-  LayoutDashboard, CalendarCheck, MessageSquare, Star, Globe, UserCog, Settings as SettingsIcon,
+  LayoutDashboard, CalendarCheck, MessageSquare, Star, Globe, UserCog, Settings as SettingsIcon, CalendarClock,
   LogOut, Menu, X,
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -10,6 +10,7 @@ import logo from '../../assets/logo.jpg'
 const navItems = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/admin/appointments', label: 'Appointments', icon: CalendarCheck },
+  { to: '/admin/availability', label: 'Availability', icon: CalendarClock },
   { to: '/admin/messages', label: 'Contact Messages', icon: MessageSquare },
   { to: '/admin/reviews', label: 'Reviews', icon: Star },
   { to: '/admin/website', label: 'Website Management', icon: Globe },

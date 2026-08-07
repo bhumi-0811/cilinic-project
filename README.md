@@ -123,3 +123,34 @@ Protected (require `Authorization: Bearer <token>` from login):
 - JWT tokens are valid for 7 days; the dashboard will redirect to login automatically if the token expires.
 - Only one admin/doctor account is supported by design (as requested) - there's no multi-user role system.
 - Not included yet: patient/tele-consultation payment integration, e-prescription PDFs, WhatsApp/SMS reminders, multi-language support.
+
+## WhatsApp Booking + Online Payment (New)
+
+### What's included
+- **Availability engine** - set the doctor's weekly schedule (per day, multiple time windows), slot duration, and how many patients can book the same slot. Manage it from **Admin → Availability**. Blocked dates (holidays/leave) are supported too.
+- **WhatsApp booking bot** - a patient messages your WhatsApp number, the bot shows available days → time slots → collects name/age/gender/concern → asks payment preference → books the appointment (visible in the same Admin → Appointments page as website bookings, tagged with source "whatsapp").
+- **Razorpay payment** - "Pay Online" generates a Razorpay Payment Link sent right in WhatsApp; "Pay at visit" skips payment and books directly.
+
+### What YOU need to set up (I can't create these for you - they require your business KYC)
+1. **AiSensy account** ([aisensy.com](https://aisensy.com)) with a verified WhatsApp Business number. Get your API key from the dashboard.
+2. **Razorpay account** ([razorpay.com](https://razorpay.com)) with KYC completed. Get your Key ID + Key Secret from Settings → API Keys, and set up a webhook (Settings → Webhooks) pointing to `https://your-backend-url/api/payments/webhook` with the `payment.captured` event enabled - copy the webhook secret it gives you.
+
+### Configure
+Add these to `backend/.env` (also in `.env.example`):
+```
+RAZORPAY_KEY_ID=your_key_id
+RAZORPAY_KEY_SECRET=your_key_secret
+RAZORPAY_WEBHOOK_SECRET=your_webhook_secret
+AISENSY_API_KEY=your_aisensy_api_key
+```
+
+In your AiSensy dashboard, set the incoming message webhook URL to:
+```
+https://your-backend-url/api/whatsapp/webhook
+```
+
+### Important - please read before going live
+- **`backend/utils/whatsapp.js`** sends messages via AiSensy's API. I wrote it based on AiSensy's general API pattern, but their exact endpoint/payload can vary by plan. Once your AiSensy account is active, send yourself a test message from their dashboard's API tester, compare it to this file, and adjust if needed.
+- **`backend/controllers/whatsappController.js` → `extractIncoming()`** reads the incoming webhook payload from AiSensy. I've guessed common field names (`phone`, `text`, etc.) but AiSensy's real payload may use different field names. **Log `req.body` from a real incoming message first** (temporarily add `console.log(JSON.stringify(req.body))` at the top of `handleIncomingMessage`), send yourself a test WhatsApp message, check the Render logs, then update `extractIncoming()` to match exactly.
+- The consultation fee is currently hardcoded at ₹500 in both `paymentController.js` and `whatsappController.js` (search for `CONSULTATION_FEE_PAISE` / `amount: 50000`) - change this to your real price, or let me know if you want it configurable from the admin panel instead.
+- This bot currently only books **in-clinic** appointments (not tele-consultations) to keep the flow simple - can extend it if you need WhatsApp booking for video consults too.

@@ -17,13 +17,17 @@ import doctorRoutes from './routes/doctorRoutes.js'
 import settingsRoutes from './routes/settingsRoutes.js'
 import treatmentRoutes from './routes/treatmentRoutes.js'
 import galleryRoutes from './routes/galleryRoutes.js'
+import availabilityRoutes from './routes/availabilityRoutes.js'
+import paymentRoutes from './routes/paymentRoutes.js'
+import whatsappRoutes from './routes/whatsappRoutes.js'
 
 dotenv.config()
 
 const app = express()
 
 app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }))
-app.use(express.json())
+// Capture raw body too - needed to verify the Razorpay webhook signature
+app.use(express.json({ verify: (req, res, buf) => { req.rawBody = buf } }))
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 app.use('/uploads', express.static(path.resolve('uploads')))
@@ -43,6 +47,9 @@ app.use('/api/doctor', doctorRoutes)
 app.use('/api/settings', settingsRoutes)
 app.use('/api/treatments', treatmentRoutes)
 app.use('/api/gallery', galleryRoutes)
+app.use('/api/availability', availabilityRoutes)
+app.use('/api/payments', paymentRoutes)
+app.use('/api/whatsapp', whatsappRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

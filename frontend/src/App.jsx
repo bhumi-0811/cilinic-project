@@ -19,6 +19,7 @@ import ProtectedRoute from './admin/components/ProtectedRoute.jsx'
 import AdminLogin from './admin/pages/Login.jsx'
 import AdminDashboard from './admin/pages/Dashboard.jsx'
 import AdminAppointments from './admin/pages/Appointments.jsx'
+import AdminAvailability from './admin/pages/AvailabilityAdmin.jsx'
 import AdminMessages from './admin/pages/Messages.jsx'
 import AdminReviews from './admin/pages/ReviewsAdmin.jsx'
 import AdminWebsite from './admin/pages/WebsiteManagement.jsx'
@@ -66,6 +67,7 @@ export default function App() {
         <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
         <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
         <Route path="/admin/appointments" element={<ProtectedRoute><AdminAppointments /></ProtectedRoute>} />
+        <Route path="/admin/availability" element={<ProtectedRoute><AdminAvailability /></ProtectedRoute>} />
         <Route path="/admin/messages" element={<ProtectedRoute><AdminMessages /></ProtectedRoute>} />
         <Route path="/admin/reviews" element={<ProtectedRoute><AdminReviews /></ProtectedRoute>} />
         <Route path="/admin/website" element={<ProtectedRoute><AdminWebsite /></ProtectedRoute>} />
