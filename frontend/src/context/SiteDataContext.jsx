@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import api from '../utils/api.js'
-import { clinic as staticClinic, doctor as staticDoctor, treatmentCategories as staticCategories, allTreatments as staticAllTreatments } from '../utils/clinicData.js'
+import { clinic as staticClinic, dermatologist as staticDoctor, treatmentCategories as staticCategories, allTreatments as staticAllTreatments } from '../utils/clinicData.js'
 
 const SiteDataContext = createContext(null)
 
@@ -37,10 +37,10 @@ export function SiteDataProvider({ children }) {
           designation: d.designation || staticDoctor.designation,
           bio: d.bio || staticDoctor.bio,
           qualifications: d.qualifications?.length ? d.qualifications : staticDoctor.qualifications,
-          specializations: d.specializations?.length ? d.specializations : staticDoctor.specializations,
+          specializations: d.specializations?.length ? d.specializations : staticDoctor.concerns,
           languages: d.languages?.length ? d.languages : staticDoctor.languages,
           photoUrl: d.photoUrl || '',
-          experienceYears: d.experienceYears || 12,
+          experienceYears: d.experienceYears || staticDoctor.experienceYears,
         })
       }
       if (treatmentsRes.status === 'fulfilled' && treatmentsRes.value.data?.length) {

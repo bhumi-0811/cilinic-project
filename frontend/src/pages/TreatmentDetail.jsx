@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { Calendar, Clock, CheckCircle2 } from 'lucide-react'
+import { Clock, CheckCircle2 } from 'lucide-react'
 import { useSiteData } from '../context/SiteDataContext.jsx'
 import NotFound from './NotFound.jsx'
 
@@ -53,9 +53,9 @@ export default function TreatmentDetail() {
         </div>
 
         <div className="mt-12 rounded-3xl bg-sand-50 p-8 text-center">
-          <p className="font-display text-lg font-semibold text-teal-800">Ready to discuss {treatment.name.toLowerCase()}?</p>
-          <Link to="/appointment" className="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-fade px-6 py-3 text-sm font-semibold text-white shadow-soft">
-            <Calendar size={16} /> Book an Appointment
+          <p className="font-display text-lg font-semibold text-teal-800">Have questions about {treatment.name.toLowerCase()}?</p>
+          <Link to="/contact" className="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-fade px-6 py-3 text-sm font-semibold text-white shadow-soft">
+            Contact Us
           </Link>
         </div>
       </div>

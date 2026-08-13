@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { MessageCircle, Phone, Calendar, ArrowUp } from 'lucide-react'
+import { MessageCircle, Phone, ArrowUp } from 'lucide-react'
 import { useSiteData } from '../context/SiteDataContext.jsx'
 
 export default function FloatingButtons() {
@@ -45,14 +44,6 @@ export default function FloatingButtons() {
         <Phone size={18} className="sm:hidden" />
         <Phone size={20} className="hidden sm:block" />
       </a>
-      <Link
-        to="/appointment"
-        aria-label="Book appointment"
-        className="flex items-center gap-2 rounded-full bg-teal-fade px-3.5 py-3 text-sm font-semibold text-white shadow-soft transition hover:scale-105 sm:px-4 sm:py-3.5"
-      >
-        <Calendar size={18} />
-        <span className="hidden sm:inline">Book</span>
-      </Link>
     </div>
   )
 }

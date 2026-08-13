@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
@@ -6,13 +6,13 @@ import FloatingButtons from './components/FloatingButtons.jsx'
 
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
-import DoctorProfile from './pages/DoctorProfile.jsx'
+import Dermatology from './pages/Dermatology.jsx'
+import Psychiatry from './pages/Psychiatry.jsx'
 import Treatments from './pages/Treatments.jsx'
 import TreatmentDetail from './pages/TreatmentDetail.jsx'
 import Reviews from './pages/Reviews.jsx'
 import FAQ from './pages/FAQ.jsx'
 import Contact from './pages/Contact.jsx'
-import Appointment from './pages/Appointment.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 import ProtectedRoute from './admin/components/ProtectedRoute.jsx'
@@ -38,7 +38,7 @@ function PublicLayout({ children }) {
     <SiteDataProvider>
       <div className="flex min-h-screen flex-col">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16 lg:pt-[76px]">{children}</main>
         <Footer />
         <FloatingButtons />
       </div>
@@ -54,13 +54,16 @@ export default function App() {
         {/* Public site */}
         <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
         <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
-        <Route path="/doctor-profile" element={<PublicLayout><DoctorProfile /></PublicLayout>} />
+        <Route path="/dermatology" element={<PublicLayout><Dermatology /></PublicLayout>} />
+        <Route path="/psychiatry" element={<PublicLayout><Psychiatry /></PublicLayout>} />
+        {/* Old links redirect forward instead of 404-ing */}
+        <Route path="/doctor-profile" element={<Navigate to="/dermatology" replace />} />
+        <Route path="/appointment" element={<Navigate to="/contact" replace />} />
         <Route path="/treatments" element={<PublicLayout><Treatments /></PublicLayout>} />
         <Route path="/treatments/:slug" element={<PublicLayout><TreatmentDetail /></PublicLayout>} />
         <Route path="/reviews" element={<PublicLayout><Reviews /></PublicLayout>} />
         <Route path="/faq" element={<PublicLayout><FAQ /></PublicLayout>} />
         <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
-        <Route path="/appointment" element={<PublicLayout><Appointment /></PublicLayout>} />
 
         {/* Admin / Doctor portal */}
         <Route path="/admin/login" element={<AdminLogin />} />

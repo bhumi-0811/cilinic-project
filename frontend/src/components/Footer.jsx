@@ -6,12 +6,13 @@ import { useSiteData } from '../context/SiteDataContext.jsx'
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/doctor-profile', label: 'Doctor' },
+  { to: '/dermatology', label: 'Dermatology' },
+  { to: '/psychiatry', label: 'Psychiatry' },
   { to: '/treatments', label: 'Treatments' },
+  { to: '/?section=gallery', label: 'Gallery' },
   { to: '/reviews', label: 'Reviews' },
   { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' },
-  { to: '/appointment', label: 'Appointment' },
 ]
 
 export default function Footer() {
@@ -46,8 +47,6 @@ export default function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-white/80">
             <li><Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-white">Terms</Link></li>
-            <li><Link to="/refund-policy" className="hover:text-white">Refund Policy</Link></li>
-            <li><Link to="/cancellation-policy" className="hover:text-white">Cancellation Policy</Link></li>
           </ul>
         </div>
 
